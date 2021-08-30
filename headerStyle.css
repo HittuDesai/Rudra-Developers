@@ -1,0 +1,45 @@
+header
+{
+    background-color: #DCFFFB;
+}
+
+div#companyName
+{
+    width: 100vw;
+    font-family: 'Arial';
+    text-align: center;
+    text-transform: uppercase;
+    color: #050A30;
+    font-size: 5vw;
+    letter-spacing: 2.5vw;
+    background-color: #7EC8E3;
+    padding: 0.5vw;
+}
+
+div#home, div#aboutUs, div#services, div#contactUs
+{
+    position: relative;
+    color:black;
+    display: inline-block;
+    background-color: #DCFFFB;
+    text-align: center;
+    width: 25vw;
+    font-size: 2vw;
+}
+
+#home a, #aboutUs a, #services a, #contactUs a
+{
+    color: black;
+    text-decoration: none;
+
+}
+
+div#home:hover, div#aboutUs:hover, div#services:hover, div#contactUs:hover
+{
+    background-color: #5885AF;
+}
+
+div.current
+{
+    background-color: red;
+}
