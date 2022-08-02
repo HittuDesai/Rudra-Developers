@@ -1,7 +1,5 @@
 /*
  * Class Definition for a Coordinate on the World
- * Variables => Latitude and Longitude
- * Getters => latitude() and longitude()
  */
 
 export class Coordinate {
