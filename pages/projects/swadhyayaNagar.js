@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { SwadhyayaNagarComponent } from "../../components/pages/SwadhyayaNagarComponent";
 
 export default function SwadhyayaNagarPage() {
 	return (
@@ -10,6 +11,7 @@ export default function SwadhyayaNagarPage() {
 					content="Swadhyaya Nagars by Rudra Developers"
 				/>
 			</Head>
+			<SwadhyayaNagarComponent />
 		</>
 	);
 }
