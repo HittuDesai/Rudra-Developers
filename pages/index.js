@@ -7,7 +7,7 @@ export default function Home() {
 				<title>Rudra Developers</title>
 				<meta
 					name="description"
-					content="Website For The Rudra Developers"
+					content="Website for Rudra Developers"
 				/>
 			</Head>
 		</>
