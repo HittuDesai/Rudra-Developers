@@ -4,6 +4,8 @@ import * as XLSX from "xlsx";
 
 export default function Home() {
 	const [file, setFile] = useState(null);
+	const [processedData, setProcessedData] = useState([]);
+
 	useEffect(() => {
 		if (!file) return;
 		const reader = new FileReader();
@@ -19,10 +21,22 @@ export default function Home() {
 			const worksheetData = XLSX.utils.sheet_to_json(
 				workbook.Sheets[worksheetName]
 			);
-			const firstObject = worksheetData[2];
-			console.log(Object.values(firstObject));
+
+			let processedDataArray = [];
+			for (const dataObject of worksheetData) {
+				const dataArray = Object.values(dataObject);
+				if (isNaN(dataArray[0])) continue;
+				const newObject = {
+					coordinateNumber: dataArray[0],
+					x: dataArray[1],
+					y: dataArray[2],
+				};
+				processedDataArray.push(newObject);
+			}
+			setProcessedData(processedDataArray);
 		};
 	}, [file]);
+	console.log(processedData);
 
 	return (
 		<>
