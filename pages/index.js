@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import * as XLSX from "xlsx";
+import { Header } from "../components/ui/Header";
 
 export default function Home() {
 	const [file, setFile] = useState(null);
@@ -36,7 +37,7 @@ export default function Home() {
 			setProcessedData(processedDataArray);
 		};
 	}, [file]);
-	console.log(processedData);
+	// console.log(processedData);
 
 	return (
 		<>
@@ -47,6 +48,7 @@ export default function Home() {
 					content="Website for Rudra Developers"
 				/>
 			</Head>
+			<Header />
 			<input
 				type="file"
 				accept="xls"

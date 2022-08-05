@@ -1,7 +1,9 @@
 import Head from "next/head";
 import { SwadhyayaNagarComponent } from "../../components/pages/SwadhyayaNagarComponent";
+import { data } from "../../data";
 
 export default function SwadhyayaNagarPage() {
+	console.log(data);
 	return (
 		<>
 			<Head>
