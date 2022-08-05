@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import Head from "next/head";
-import { Header } from "../../components/ui/Header";
-import { ProjectCard } from "../../components/ui/ProjectCard";
+import { Header } from "../../components/Header";
+import { ProjectCard } from "../../components/ProjectCard";
 
 export default function SwadhyayaNagarPage() {
 	return (

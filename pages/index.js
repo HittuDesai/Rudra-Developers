@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import * as XLSX from "xlsx";
-import { Header } from "../components/ui/Header";
+import { Header } from "../components/Header";
 
 export default function Home() {
 	const [file, setFile] = useState(null);
@@ -29,15 +29,14 @@ export default function Home() {
 				if (isNaN(dataArray[0])) continue;
 				const newObject = {
 					coordinateNumber: dataArray[0],
-					x: dataArray[1],
-					y: dataArray[2],
+					y: dataArray[1],
+					x: dataArray[2],
 				};
 				processedDataArray.push(newObject);
 			}
 			setProcessedData(processedDataArray);
 		};
 	}, [file]);
-	// console.log(processedData);
 
 	return (
 		<>
