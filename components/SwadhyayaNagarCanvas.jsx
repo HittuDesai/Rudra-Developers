@@ -1,22 +1,23 @@
 import { useEffect, useRef } from "react";
-import { fillRectangle, drawCircle, drawLine } from "../utility/canvas";
+import { fillRectangle } from "../utility/canvas";
 
-export const SwadhyayaNagarCanvas = ({ data }) => {
+export const SwadhyayaNagarCanvas = ({
+	data,
+	absoluteWidth,
+	absoluteHeight,
+}) => {
 	const canvasRef = useRef(null);
+	const canvasSideLength = 700;
 
 	useEffect(() => {
 		if (!data) return;
+
 		const canvasElement = canvasRef.current;
 		const canvasContext = canvasElement.getContext("2d");
-		fillRectangle(
-			canvasContext,
-			0,
-			0,
-			canvasContext.canvas.width,
-			canvasContext.canvas.height
-		);
-		// for (const object of data)
-		// 	drawCircle(canvasContext, object.x, object.y, 3);
+		const scaleFactorX = canvasSideLength / absoluteWidth;
+		const scaleFactorY = canvasSideLength / absoluteHeight;
+		canvasContext.scale(scaleFactorX, scaleFactorY);
+		fillRectangle(canvasContext, 0, 0, canvasSideLength, canvasSideLength);
 
 		canvasContext.beginPath();
 		canvasContext.moveTo(data[data.length - 1].x, data[data.length - 1].y);
@@ -28,5 +29,11 @@ export const SwadhyayaNagarCanvas = ({ data }) => {
 		canvasContext.fill();
 	}, [data]);
 
-	return <canvas ref={canvasRef} width={500} height={500} />;
+	return (
+		<canvas
+			ref={canvasRef}
+			width={canvasSideLength}
+			height={canvasSideLength}
+		/>
+	);
 };

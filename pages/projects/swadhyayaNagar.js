@@ -2,7 +2,11 @@ import Head from "next/head";
 import { SwadhyayaNagarComponent } from "../../components/SwadhyayaNagarComponent";
 import { data } from "../../data";
 
-export default function SwadhyayaNagarPage({ newData }) {
+export default function SwadhyayaNagarPage({
+	newData,
+	absoluteWidth,
+	absoluteHeight,
+}) {
 	return (
 		<>
 			<Head>
@@ -12,7 +16,11 @@ export default function SwadhyayaNagarPage({ newData }) {
 					content="Swadhyaya Nagar by Rudra Developers"
 				/>
 			</Head>
-			<SwadhyayaNagarComponent data={newData} />
+			<SwadhyayaNagarComponent
+				data={newData}
+				absoluteWidth={absoluteWidth}
+				absoluteHeight={absoluteHeight}
+			/>
 		</>
 	);
 }
@@ -24,14 +32,14 @@ export function getServerSideProps() {
 	const maxX = Math.max(...X);
 	const minY = Math.min(...Y);
 	const maxY = Math.max(...Y);
-	const indexOfRight = X.indexOf(maxX);
+
+	const absoluteWidth = maxX - minX;
+	const absoluteHeight = maxY - minY;
 	const indexOfLeft = X.indexOf(minX);
 	const indexOfTop = Y.indexOf(maxY);
-	const indexOfBottom = Y.indexOf(minY);
 
 	const originX = data[indexOfLeft].x;
 	const originY = data[indexOfTop].y;
-
 	const newData = data.map(object => {
 		const oldX = object.x;
 		const oldY = object.y;
@@ -43,6 +51,8 @@ export function getServerSideProps() {
 	return {
 		props: {
 			newData,
+			absoluteWidth,
+			absoluteHeight,
 		},
 	};
 }
