@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { drawCircle, drawLine } from "../utility/canvas";
+import { fillRectangle, drawCircle, drawLine } from "../utility/canvas";
 
 export const SwadhyayaNagarCanvas = ({ data }) => {
 	const canvasRef = useRef(null);
@@ -8,29 +8,24 @@ export const SwadhyayaNagarCanvas = ({ data }) => {
 		if (!data) return;
 		const canvasElement = canvasRef.current;
 		const canvasContext = canvasElement.getContext("2d");
-		for (const object of data)
-			drawCircle(canvasContext, object.x, object.y, 3);
+		fillRectangle(
+			canvasContext,
+			0,
+			0,
+			canvasContext.canvas.width,
+			canvasContext.canvas.height
+		);
+		// for (const object of data)
+		// 	drawCircle(canvasContext, object.x, object.y, 3);
 
+		canvasContext.beginPath();
+		canvasContext.moveTo(data[data.length - 1].x, data[data.length - 1].y);
 		for (const i = 0; i < data.length; i++) {
-			if (i + 1 === data.length) {
-				drawLine(
-					canvasContext,
-					data[i].x,
-					data[i].y,
-					data[0].x,
-					data[0].y
-				);
-				canvasContext.fill();
-				return;
-			}
-			drawLine(
-				canvasContext,
-				data[i].x,
-				data[i].y,
-				data[i + 1].x,
-				data[i + 1].y
-			);
+			canvasContext.lineTo(data[i].x, data[i].y);
 		}
+		canvasContext.closePath();
+		canvasContext.fillStyle = "red";
+		canvasContext.fill();
 	}, [data]);
 
 	return <canvas ref={canvasRef} width={500} height={500} />;

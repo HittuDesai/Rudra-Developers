@@ -10,3 +10,7 @@ export function drawLine(canvasContext, x1, y1, x2, y2) {
 	canvasContext.lineTo(x2, y2);
 	canvasContext.stroke();
 }
+
+export function fillRectangle(canvasContext, x, y, w, h) {
+	canvasContext.fillRect(x, y, w, h);
+}
